@@ -1,0 +1,109 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8fafc;
+  overflow: hidden;
+}
+
+.app {
+  display: grid;
+  grid-template-areas: 
+    "nav header"
+    "nav content";
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.app-nav {
+  grid-area: nav;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  z-index: 100;
+}
+
+.app-header {
+  grid-area: header;
+  position: fixed;
+  top: 0;
+  left: 250px;
+  right: 0;
+  z-index: 99;
+}
+
+.app-content {
+  grid-area: content;
+  padding: 0;
+  background-color: #f8fafc;
+  margin-left: 250px;
+  margin-top: 80px;
+  height: calc(100vh - 80px);
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  .app {
+    grid-template-areas: 
+      "header"
+      "nav"
+      "content";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
+  }
+  
+  .app-nav {
+    position: relative;
+    left: 0;
+    top: 0;
+    height: auto;
+    width: 100%;
+    min-width: 100%;
+    overflow-x: auto;
+  }
+  
+  .app-header {
+    position: relative;
+    left: 0;
+    right: auto;
+  }
+  
+  .app-content {
+    margin-left: 0;
+    margin-top: 0;
+    height: auto;
+  }
+  
+  .app-nav .sidebar-nav {
+    display: flex;
+    padding: 10px 20px;
+    gap: 10px;
+    overflow-x: auto;
+  }
+  
+  .app-nav .nav-item {
+    white-space: nowrap;
+    padding: 8px 16px;
+    border-radius: 20px;
+    min-width: auto;
+  }
+  
+  .app-nav .nav-label {
+    display: none;
+  }
+  
+  .app-nav .sidebar-logo {
+    display: none;
+  }
+}
